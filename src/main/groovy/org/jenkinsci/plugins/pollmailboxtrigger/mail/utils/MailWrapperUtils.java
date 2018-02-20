@@ -97,6 +97,7 @@ public abstract class MailWrapperUtils {
             String msgSubject = stringify(message.getSubject());
             envVars.put(prefix + "subject", (msgSubject == null) ? "" : msgSubject);
             envVars.put(prefix + "from", stringify(message.getFrom()));
+            envVars.put(prefix + "fromName", Stringify.stringify_address_names(message.getFrom()));
             envVars.put(prefix + "replyTo", stringify(message.getReplyTo()));
             envVars.put(prefix + "flags", stringify(message.getFlags()));
             envVars.put(prefix + "folder", stringify(message.getFolder()));

@@ -316,6 +316,20 @@ public abstract class Stringify {
         return "";
     }
 
+    public static String stringify_address_names(final Address[] addresses){
+        if (addresses == null) return "";
+        List<String> parsed = new ArrayList<String>();
+        for (Address addr : addresses){
+            if(addr instanceof InternetAddress){
+                String name = ((InternetAddress)addr).getPersonal();
+                parsed.add((name != null) ? name : ((InternetAddress)addr).getAddress());
+            }
+            else parsed.add(addr.toString());
+        }
+        return StringUtils.join(parsed, ",");
+    }
+
+
     /**
      * Get text from all parts of the email.
      * Loosely based on <a href="http://www.oracle.com/technetwork/java/javamail/faq/index.html#mainbody">oracle.com</a>.
